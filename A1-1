@@ -1,27 +1,12 @@
-# Given data
 age_intervals <- c("1-5", "5-15", "15-20", "20-50", "50-80", "80-110")
 frequencies <- c(200, 450, 300, 1500, 700, 44)
-
-# Calculate cumulative frequencies
 cumulative_freq <- cumsum(frequencies)
-
-# Calculate the total frequency
 total_freq <- sum(frequencies)
-
-# Find the middle position (median position)
 middle_position <- (total_freq + 1) / 2
-
-# Find the index where the cumulative frequency is greater than or equal to the middle position
-median_index <- which(cumulative_freq >= middle_position)[1]
-
-# Calculate the median value
+median_index <- which(cumulative_freq >= middle_position)
 if (total_freq %% 2 == 1) {
-  # If the total frequency is odd
   median_value <- as.numeric(age_intervals[median_index])
 } else {
-  # If the total frequency is even
   median_value <- mean(as.numeric(age_intervals[c(median_index, median_index + 1)]))
 }
-
-# Display the approximate median value
 cat("Approximate median value:", median_value, "\n")
